@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Toaster } from "svelte-french-toast";
   import { invalidate } from "$app/navigation";
   import { onMount } from "svelte";
 
@@ -23,5 +24,7 @@
     return () => subscription.unsubscribe();
   });
 </script>
+
+<Toaster />
 
 <slot />

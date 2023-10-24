@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
-  import Button from '$lib/components/ui/Button.svelte';
-  import { slide } from 'svelte/transition';
+  import { goto } from "$app/navigation";
+  import Button from "$lib/components/ui/Button.svelte";
+  import toast from "svelte-french-toast";
 
   export let data;
 
@@ -17,9 +17,16 @@
 
     if (error) {
       console.error(error);
+      let errorMessage = error.message;
+
+      if (!password) errorMessage = "Please enter a password";
+      if (!email) errorMessage = "Please enter a email";
+      if (!username) errorMessage = "Please enter a username";
+
+      toast.error(errorMessage);
     } else {
       console.log(result);
-      goto("/");
+      goto(`/${username}`);
     }
   }
 </script>
