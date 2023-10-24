@@ -1,8 +1,7 @@
 <script lang="ts">
-
-  import Button from "$lib/components/Button.svelte";
-
+  import Button from "$lib/components/ui/Button.svelte";
 </script>
+
 <svelte:head>
   <title>Figment</title>
 </svelte:head>
@@ -19,15 +18,15 @@
       <br>
       But Fully <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#22d3ee]">Customizable.</span>
     </h1>
-    <h2 class="text-neutral text-xl">
-      Your own personal page to show-off to your friends.
+    <h2 class="text-muted text-xl">
+      Your own personal page to style and share.
     </h2>
   </div>
 
   <div class="text-center w-64 space-y-4">
-    <Button href="/sign-up">
+    <Button href="/sign-up" styling="p-4">
       Create Your Page
     </Button>
-    <a href="/login" class="block text-sm text-neutral hover:underline">Log In</a>
+    <a href="/login" class="block text-sm text-muted hover:underline">Log In</a>
   </div>
 </div>

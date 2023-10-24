@@ -18,7 +18,7 @@
 <svelte:element
   this={href ? "a" : "button"}
   class={cn(
-    "block p-4 rounded-xl bg-primary hover:bg-primary-dark hover:bg-opacity-90 duration-200 text-white font-bold w-full shadow-md active:shadow-none active:scale-95",
+    "block p-3 rounded-xl bg-primary hover:bg-primary-dark hover:bg-opacity-90 duration-200 text-white font-bold w-full shadow-md active:shadow-none active:scale-95",
     styling
   )} role="button" tabindex="0"
   {href}

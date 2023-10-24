@@ -13,15 +13,16 @@ export default {
       danger: colors.rose,
       warning: colors.amber,
       success: colors.emerald,
-      neutral: {
-        DEFAULT: colors.neutral[500],
-        light: colors.neutral[300],
-        extralight: colors.neutral[100],
-      },
+      neutral: colors.neutral,
 
       primary: {
         DEFAULT: colors.teal[400],
         dark: colors.teal[500],
+      },
+      muted: {
+        DEFAULT: colors.neutral[500],
+        light: colors.neutral[300],
+        extralight: colors.neutral[100],
       }
     },
     fontFamily: {
