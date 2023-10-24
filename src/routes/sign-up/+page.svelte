@@ -53,7 +53,7 @@
             bind:value={username} />
         </div>
 
-        <div class="flex gap-2">
+        <div class="flex gap-4">
           <input
             type="text"
             placeholder="Email..."
