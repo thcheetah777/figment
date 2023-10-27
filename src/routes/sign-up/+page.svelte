@@ -61,7 +61,7 @@
 
       <div class="flex gap-4">
         <Input
-          type="text"
+          type="email"
           placeholder="Email..."
           styling="flex-1"
           bind:value={email} />

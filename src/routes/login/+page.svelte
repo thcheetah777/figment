@@ -45,7 +45,7 @@
     <form class="space-y-4 my-16" on:submit|preventDefault={logIn}>
       <div class="flex gap-4">
         <Input
-          type="text"
+          type="email"
           placeholder="Email..."
           styling="flex-1"
           bind:value={email} />
