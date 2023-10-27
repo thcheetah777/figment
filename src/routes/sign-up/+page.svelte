@@ -1,6 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import Button from "$lib/components/ui/Button.svelte";
+  import Input from "$lib/components/ui/Input.svelte";
   import toast from "svelte-french-toast";
 
   export let data;
@@ -13,6 +14,11 @@
     const { data: result, error } = await data.supabase.auth.signUp({
       email,
       password,
+      options: {
+        data: {
+          username,
+        },
+      },
     });
 
     if (error) {
@@ -26,6 +32,7 @@
       toast.error(errorMessage);
     } else {
       console.log(result);
+      toast.success("Signed up successfully!");
       goto(`/${username}`);
     }
   }
@@ -35,48 +42,46 @@
   <title>Figment - Sign Up</title>
 </svelte:head>
 
-<div class="min-h-screen flex items-center">
+<div class="h-screen flex items-center">
   <div class="w-2/5 ml-32">
-    <div>
-      <div class="space-y-2">
-        <h1 class="font-bold text-h1">Welcome to Figment</h1>
-        <h2 class="text-muted">The one link to rule them all.</h2>
+    <div class="space-y-2">
+      <h1 class="font-bold text-h1">Welcome to Figment</h1>
+      <h2 class="text-muted">The one link to rule them all.</h2>
+    </div>
+
+    <form class="space-y-4 my-16" on:submit|preventDefault={signUp}>
+      <div class="bg-muted-extralight rounded-lg p-3 text-sm w-full flex">
+        <span class="text-muted">figment.me/</span>
+        <input
+          type="text"
+          placeholder="username"
+          class="bg-transparent outline-none flex-grow placeholder:text-muted-light"
+          bind:value={username} />
       </div>
 
-      <form class="space-y-4 my-16" on:submit|preventDefault={signUp}>
-        <div class="bg-muted-extralight rounded-lg p-3 text-sm w-full flex">
-          <span class="text-muted">figment.me/</span>
-          <input
-            type="text"
-            placeholder="username"
-            class="bg-transparent outline-none flex-grow placeholder:text-muted-light"
-            bind:value={username} />
-        </div>
+      <div class="flex gap-4">
+        <Input
+          type="text"
+          placeholder="Email..."
+          styling="flex-1"
+          bind:value={email} />
+        <Input
+          type="password"
+          placeholder="Password..."
+          styling="flex-1"
+          bind:value={password} />
+      </div>
 
-        <div class="flex gap-4">
-          <input
-            type="text"
-            placeholder="Email..."
-            class="bg-muted-extralight rounded-lg p-3 text-sm flex-1 outline-none"
-            bind:value={email} />
-          <input
-            type="password"
-            placeholder="Password..."
-            class="bg-muted-extralight rounded-lg p-3 text-sm flex-1 outline-none"
-            bind:value={password} />
-        </div>
+      <Button type="submit" styling="text-sm">
+        Continue
+      </Button>
+    </form>
 
-        <Button type="submit" styling="text-sm">
-          Continue
-        </Button>
-      </form>
-
-      <p class="text-sm text-muted">
-        or
-        <a href="/login" class="hover:underline">
-          log in
-        </a>
-      </p>
-    </div>
+    <p class="text-sm text-muted">
+      or
+      <a href="/login" class="hover:underline">
+        log in
+      </a>
+    </p>
   </div>
 </div>
