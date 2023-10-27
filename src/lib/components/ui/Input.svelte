@@ -7,6 +7,7 @@
   };
 
   export let styling = "";
+  export let value = "";
 </script>
 
 <input
@@ -14,4 +15,5 @@
     "bg-muted-extralight rounded-lg p-3 text-sm outline-none",
     styling
   )}
-  {...$$restProps} />
+  {...$$restProps}
+  bind:value />

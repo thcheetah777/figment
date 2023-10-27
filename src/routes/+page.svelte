@@ -1,5 +1,8 @@
 <script lang="ts">
+  import type { PageData } from "./$types";
   import Button from "$lib/components/ui/Button.svelte";
+
+  export let data: PageData;
 </script>
 
 <svelte:head>
@@ -24,9 +27,16 @@
   </div>
 
   <div class="text-center w-64 space-y-4">
-    <Button href="/sign-up" styling="p-4">
-      Create Your Page
-    </Button>
-    <a href="/login" class="block text-sm text-muted hover:underline">Log In</a>
+    {#if data.session}
+      <Button href="/{data.session.user.user_metadata.username}" styling="p-4">
+        Go To Your Page
+      </Button>
+    {:else}
+      <Button href="/sign-up" styling="p-4 gap-1 hover:gap-3">
+        <span>Create Your Page</span>
+        <iconify-icon icon="mdi:arrow-right" class="text-2xl"></iconify-icon>
+      </Button>
+      <a href="/login" class="block text-sm text-muted hover:underline">Log In</a>
+    {/if}
   </div>
 </div>
